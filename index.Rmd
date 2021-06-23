@@ -1,0 +1,329 @@
+---
+title: "The Canyon of Success"
+author: "Malcolm Barrett"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      titleSlideClass: ["bottom", "left"]
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: "16:9"
+      countIncrementalSlides: true
+---
+
+class: bottom hide-count title large
+background-color: white
+background-image: url(img/universe.jpg)
+background-position: center
+background-size: 110%
+
+<link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Karla|Montserrat|Open+Sans|Quattrocento|Raleway&display=swap" rel="stylesheet">
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(highlight = TRUE, warning = FALSE)
+local({
+  hook_old <- knitr::knit_hooks$get("document")  # save the old hook
+  knitr::knit_hooks$set(document = function(x, ...) {
+    x <- gsub("'''✓'''", "<span style='color:#a8cc8d'>✓</span>", x)
+    x <- gsub("'''●'''", "<span style='color:#e88388'>●</span>", x)
+    x <- gsub("('''')(.+?)('''')", "<span style='color:#a8cc8d'>\\2</span>", x)
+    x <- gsub("('''`)(.+?)(`''')", "<span style='color:#6C7B7F'>&#96;\\2&#96;</span>", x)
+    x <- gsub("(''')(.+?)(''')", "<span style='color:#6fbbed'>'\\2'</span>", x)
+    hook_old(x, ...)
+  })
+})
+
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_light(
+  white_color = "#fff",
+  header_font_google = google_font("Cedarville Cursive", "600"),
+  text_font_google = google_font("Karla", "300", "300i", "600"),
+  code_font_google = google_font("Fira Code"),
+  text_font_size = "24px",
+  code_font_size = "1.2em",
+  header_color = "#56B4E9"
+)
+
+opaque_box <- function(x) {
+  htmltools::tags$div(
+    class = "f-subheadline bg-white-o90 pa5 shadow-3 h-50",
+    htmltools::tags$h1(x)
+  )
+}
+
+```
+
+```{r xaringan-animate-all, echo=FALSE}
+xaringanExtra::use_animate_all("fade")
+xaringanExtra::use_tachyons()
+xaringanExtra::use_text_poster()
+```
+
+```{css echo=FALSE}
+a, a > code {
+  color: #FFF;
+  text-decoration: none;
+}
+
+em {
+  color: #D55E00FF;
+  font-style: normal;
+}
+
+strong {
+  color: #56B4E9FF;
+  font-weight: normal;
+}
+
+del {
+  color: #E5E5E5;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.inverse del {
+  color: #6C7B7F;
+}
+
+.title {
+  color: #fff;
+}
+.title h1, h2, h3 {
+  color: #fff;
+}
+
+.bg-white-o90{
+   background-color: rgba(255, 255, 255, 0.9);
+   color: #56B4E9;
+}
+
+.large { font-size: 175% }
+.large h1 { font-size: 175% }
+.hide-count .remark-slide-number {
+  display: none;
+}
+
+.text-poster {
+	font-family: 'Cinzel', serif;
+}
+
+.inverse {
+  color: #b9bfca;
+  background-color: #282D35
+}
+
+.inverse.remark-slide-number {
+  color: #b9bfca;
+}
+
+.remark-code-line-highlighted {
+  color: #D55E00FF;
+  background-color: transparent;
+}
+
+.remark-inline-code {
+  color: #b9bfca;
+}
+
+code {
+  line-height: 120%
+}
+
+.h2 {
+  font-family: 'Karla'
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+.dim {
+  color: #6C7B7F;
+}
+```
+
+
+# the canyon of success
+## scaling best practices in R with internal R packages
+
+Malcolm Barrett
+
+---
+
+class: top, center, hide-count
+background-image: url(img/pit.jpg)
+background-position: cover
+background-size: 100%
+
+---
+
+class: top, center, hide-count
+background-image: url(img/canyon.jpg)
+background-position: cover
+background-size: 100%
+
+---
+
+class: inverse, large, middle
+
+# **consistent, robust code**
+# **scaleable best practices**
+
+---
+
+class: center, middle, hide-count
+background-image: url(img/consistent-diagram.jpg)
+background-position: center
+background-size: 110%
+
+`r opaque_box("consistent, robust code")`
+
+---
+
+class: top, center, hide-count
+background-image: url(img/telephone.jpg)
+background-position: center
+background-size: 110%
+
+---
+
+class: center middle 
+
+`r xaringanExtra::text_poster(
+  "In R, the fundamental unit of 
+  shareable code 
+  is the package."
+)`
+
+.footnote.pull-right[— Hadley Wickham]
+
+---
+
+class: inverse, large
+
+<code>
+<em>
+library(lvgo)<br />
+create_lvgo_package("../lvgo.collaborate")<br />
+</em>
+</code>
+
+---
+
+class: inverse, large
+
+<code>
+<del>
+library(lvgo)<br />
+create_lvgo_package("../lvgo.collaborate")<br />
+</del>
+
+'''✓''' Creating '''lvgo.collaborate'''<br />
+'''✓''' Creating '''R/'''<br />
+'''✓''' Writing '''DESCRIPTION'''<br />
+'''✓''' Writing '''NAMESPACE'''<br />
+'''✓''' Writing '''lvgo.collaborate.Rproj'''<br />
+'''✓''' Adding '''testthat''' to ''''Imports'''' field in DESCRIPTION<br />
+'''✓''' Creating '''tests/testthat/'''<br />
+'''✓''' Initialising Git repo<br />
+'''●''' Request a GitHub repo:  '''`create_jira_github()`'''<br />
+'''●''' When the repo is available:  '''`use_lvgo_github()`'''<br />
+'''✓''' Setting active project to '''lvgo.collaborate'''
+</code>
+
+---
+
+class: inverse, large
+
+<code>
+<del>
+library(lvgo)<br />
+create_lvgo_package("../lvgo.collaborate")<br />
+</del>
+
+<del>
+✓ Creating 'lvgo.collaborate'<br />
+✓ Creating 'R/'<br />
+✓ Writing 'DESCRIPTION'<br />
+✓ Writing 'NAMESPACE'<br />
+✓ Writing 'lvgo.collaborate.Rproj'<br />
+✓ Adding 'testthat' to Imports field in DESCRIPTION<br />
+✓ Creating 'tests/testthat/'<br />
+✓ Initialising Git repo<br />
+● Request a GitHub repo:  &#96;<em>create_jira_github()</em>&#96;<br />
+● When the repo is available:  &#96;<em>use_lvgo_github()</em>&#96;<br />
+✓ Setting active project to 'lvgo.collaborate'
+</del>
+</code>
+
+---
+
+class: center, middle, hide-count
+background-image: url(img/scaleable-earth.jpg)
+background-position: center
+background-size: 110%
+
+`r opaque_box("scaleable best practices")`
+
+---
+
+class: inverse, large, middle
+
+# **project independence**
+# **version control**
+# **complete reproducibility**
+
+---
+
+class: inverse, large, middle
+
+# **every analysis is an RStudio project**
+# **every project is a git repository**
+# **every repository has an renv environment**
+
+---
+
+class: inverse, large
+
+<code>
+<em>create_lvgo_project("../lvgo.collaborate")</em><br /><br />
+'''✓''' Creating '''lvgo.collaborate'''<br />
+'''✓''' Creating '''R/'''<br />
+'''✓''' Writing '''lvgo.collaborate.Rproj'''<br />
+'''✓''' Adding '''.Rproj.user''' to '''.gitignore'''<br />
+'''✓''' Initialising renv environment<br />
+'''✓''' Initialising Git repo<br />
+'''●''' Request a GitHub repo:  '''`create_jira_github()`'''<br />
+'''●''' When the repo is available:  '''`use_lvgo_github()`'''<br />
+'''✓''' Setting active project to '''lvgo.collaborate'''
+</code>
+
+---
+
+class: inverse, large, middle
+
+# **We also support automated code style, git and GitHub workflows, and code pipelines**
+
+---
+
+class: bottom hide-count title large
+background-color: white
+background-image: url(img/universe.jpg)
+background-position: center
+background-size: 110%
+
+[@malco_barrett](https://twitter.com/malco_barrett)
+
+<https://malco.io/>
+
+<https://github.com/malcolmbarrett>

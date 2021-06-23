@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Canyon of Success</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Malcolm Barrett" />
+    <meta name="date" content="2021-06-23" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/animate.css-xaringan/animate.fade.css" rel="stylesheet" />
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/text-poster/text-poster.css" rel="stylesheet" />
+    <script src="libs/text-poster/text-poster.js"></script>
+    <script src="libs/text-poster/text-poster-init.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: bottom hide-count title large
+background-color: white
+background-image: url(img/universe.jpg)
+background-position: center
+background-size: 110%
+
+&lt;link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Karla|Montserrat|Open+Sans|Quattrocento|Raleway&amp;display=swap" rel="stylesheet"&gt;
+
+
+
+
+
+
+
+
+&lt;style type="text/css"&gt;
+a, a &gt; code {
+  color: #FFF;
+  text-decoration: none;
+}
+
+em {
+  color: #D55E00FF;
+  font-style: normal;
+}
+
+strong {
+  color: #56B4E9FF;
+  font-weight: normal;
+}
+
+del {
+  color: #E5E5E5;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.inverse del {
+  color: #6C7B7F;
+}
+
+.title {
+  color: #fff;
+}
+.title h1, h2, h3 {
+  color: #fff;
+}
+
+.bg-white-o90{
+   background-color: rgba(255, 255, 255, 0.9);
+   color: #56B4E9;
+}
+
+.large { font-size: 175% }
+.large h1 { font-size: 175% }
+.hide-count .remark-slide-number {
+  display: none;
+}
+
+.text-poster {
+	font-family: 'Cinzel', serif;
+}
+
+.inverse {
+  color: #b9bfca;
+  background-color: #282D35
+}
+
+.inverse.remark-slide-number {
+  color: #b9bfca;
+}
+
+.remark-code-line-highlighted {
+  color: #D55E00FF;
+  background-color: transparent;
+}
+
+.remark-inline-code {
+  color: #b9bfca;
+}
+
+code {
+  line-height: 120%
+}
+
+.h2 {
+  font-family: 'Karla'
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+.dim {
+  color: #6C7B7F;
+}
+&lt;/style&gt;
+
+
+# the canyon of success
+## scaling best practices in R with internal R packages
+
+Malcolm Barrett
+
+---
+
+class: top, center, hide-count
+background-image: url(img/pit.jpg)
+background-position: cover
+background-size: 100%
+
+---
+
+class: top, center, hide-count
+background-image: url(img/canyon.jpg)
+background-position: cover
+background-size: 100%
+
+---
+
+class: inverse, large, middle
+
+# **consistent, robust code**
+# **scaleable best practices**
+
+---
+
+class: center, middle, hide-count
+background-image: url(img/consistent-diagram.jpg)
+background-position: center
+background-size: 110%
+
+<div class="f-subheadline bg-white-o90 pa5 shadow-3 h-50">
+<h1>consistent, robust code</h1>
+</div>
+
+---
+
+class: top, center, hide-count
+background-image: url(img/telephone.jpg)
+background-position: center
+background-size: 110%
+
+---
+
+class: center middle 
+
+<div class="text-poster" style="width:100%;height:100%;padding:1em;">
+<div class="text-poster__text" data-text="In R, the fundamental unit of &#10;  shareable code &#10;  is the package."></div>
+</div>
+
+.footnote.pull-right[— Hadley Wickham]
+
+---
+
+class: inverse, large
+
+&lt;code&gt;
+&lt;em&gt;
+library(lvgo)&lt;br /&gt;
+create_lvgo_package("../lvgo.collaborate")&lt;br /&gt;
+&lt;/em&gt;
+&lt;/code&gt;
+
+---
+
+class: inverse, large
+
+&lt;code&gt;
+&lt;del&gt;
+library(lvgo)&lt;br /&gt;
+create_lvgo_package("../lvgo.collaborate")&lt;br /&gt;
+&lt;/del&gt;
+
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Creating &lt;span style='color:#6fbbed'&gt;'lvgo.collaborate'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Creating &lt;span style='color:#6fbbed'&gt;'R/'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Writing &lt;span style='color:#6fbbed'&gt;'DESCRIPTION'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Writing &lt;span style='color:#6fbbed'&gt;'NAMESPACE'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Writing &lt;span style='color:#6fbbed'&gt;'lvgo.collaborate.Rproj'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Adding &lt;span style='color:#6fbbed'&gt;'testthat'&lt;/span&gt; to &lt;span style='color:#a8cc8d'&gt;Imports&lt;/span&gt; field in DESCRIPTION&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Creating &lt;span style='color:#6fbbed'&gt;'tests/testthat/'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Initialising Git repo&lt;br /&gt;
+&lt;span style='color:#e88388'&gt;●&lt;/span&gt; Request a GitHub repo:  &lt;span style='color:#6C7B7F'&gt;&amp;#96;create_jira_github()&amp;#96;&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#e88388'&gt;●&lt;/span&gt; When the repo is available:  &lt;span style='color:#6C7B7F'&gt;&amp;#96;use_lvgo_github()&amp;#96;&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Setting active project to &lt;span style='color:#6fbbed'&gt;'lvgo.collaborate'&lt;/span&gt;
+&lt;/code&gt;
+
+---
+
+class: inverse, large
+
+&lt;code&gt;
+&lt;del&gt;
+library(lvgo)&lt;br /&gt;
+create_lvgo_package("../lvgo.collaborate")&lt;br /&gt;
+&lt;/del&gt;
+
+&lt;del&gt;
+✓ Creating 'lvgo.collaborate'&lt;br /&gt;
+✓ Creating 'R/'&lt;br /&gt;
+✓ Writing 'DESCRIPTION'&lt;br /&gt;
+✓ Writing 'NAMESPACE'&lt;br /&gt;
+✓ Writing 'lvgo.collaborate.Rproj'&lt;br /&gt;
+✓ Adding 'testthat' to Imports field in DESCRIPTION&lt;br /&gt;
+✓ Creating 'tests/testthat/'&lt;br /&gt;
+✓ Initialising Git repo&lt;br /&gt;
+● Request a GitHub repo:  &amp;#96;&lt;em&gt;create_jira_github()&lt;/em&gt;&amp;#96;&lt;br /&gt;
+● When the repo is available:  &amp;#96;&lt;em&gt;use_lvgo_github()&lt;/em&gt;&amp;#96;&lt;br /&gt;
+✓ Setting active project to 'lvgo.collaborate'
+&lt;/del&gt;
+&lt;/code&gt;
+
+---
+
+class: center, middle, hide-count
+background-image: url(img/scaleable-earth.jpg)
+background-position: center
+background-size: 110%
+
+<div class="f-subheadline bg-white-o90 pa5 shadow-3 h-50">
+<h1>scaleable best practices</h1>
+</div>
+
+---
+
+class: inverse, large, middle
+
+# **project independence**
+# **version control**
+# **complete reproducibility**
+
+---
+
+class: inverse, large, middle
+
+# **every analysis is an RStudio project**
+# **every project is a git repository**
+# **every repository has an renv environment**
+
+---
+
+class: inverse, large
+
+&lt;code&gt;
+&lt;em&gt;create_lvgo_project("../lvgo.collaborate")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Creating &lt;span style='color:#6fbbed'&gt;'lvgo.collaborate'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Creating &lt;span style='color:#6fbbed'&gt;'R/'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Writing &lt;span style='color:#6fbbed'&gt;'lvgo.collaborate.Rproj'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Adding &lt;span style='color:#6fbbed'&gt;'.Rproj.user'&lt;/span&gt; to &lt;span style='color:#6fbbed'&gt;'.gitignore'&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Initialising renv environment&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Initialising Git repo&lt;br /&gt;
+&lt;span style='color:#e88388'&gt;●&lt;/span&gt; Request a GitHub repo:  &lt;span style='color:#6C7B7F'&gt;&amp;#96;create_jira_github()&amp;#96;&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#e88388'&gt;●&lt;/span&gt; When the repo is available:  &lt;span style='color:#6C7B7F'&gt;&amp;#96;use_lvgo_github()&amp;#96;&lt;/span&gt;&lt;br /&gt;
+&lt;span style='color:#a8cc8d'&gt;✓&lt;/span&gt; Setting active project to &lt;span style='color:#6fbbed'&gt;'lvgo.collaborate'&lt;/span&gt;
+&lt;/code&gt;
+
+---
+
+class: inverse, large, middle
+
+# **We also support automated code style, git and GitHub workflows, and code pipelines**
+
+---
+
+class: bottom hide-count title large
+background-color: white
+background-image: url(img/universe.jpg)
+background-position: center
+background-size: 110%
+
+[@malco_barrett](https://twitter.com/malco_barrett)
+
+&lt;https://malco.io/&gt;
+
+&lt;https://github.com/malcolmbarrett&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
